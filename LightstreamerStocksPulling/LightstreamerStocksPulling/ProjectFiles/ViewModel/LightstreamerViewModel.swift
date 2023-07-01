@@ -42,8 +42,11 @@ class LightstreamerViewModel: ObservableObject {
         self.stocks = []
     }
     
+    @MainActor
     @objc func manageConnectionStatus(_ notification: Notification){
-        self.isConnected = notification.userInfo?[IS_CONNECTED] as? Bool ?? false
+        Task {
+            self.isConnected = notification.userInfo?[IS_CONNECTED] as? Bool ?? false
+        }
     }
     
     deinit {
