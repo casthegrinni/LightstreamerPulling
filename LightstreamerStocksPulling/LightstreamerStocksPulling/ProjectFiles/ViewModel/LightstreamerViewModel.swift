@@ -34,6 +34,7 @@ class LightstreamerViewModel: ObservableObject {
     
     @objc func disconnect() {
         Connector.shared().disconnect()
+        self.stocks = []
     }
     
     deinit {
