@@ -53,6 +53,9 @@ class LightstreamerViewModel: ObservableObject {
         NotificationCenter.default.removeObserver(self,
                                                   name: UIApplication.willEnterForegroundNotification,
                                                   object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NOTIFICATION_CONN_STATUS,
+                                                  object: nil)
     }
 }
 
