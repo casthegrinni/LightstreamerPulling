@@ -34,7 +34,19 @@ extension LightstreamerViewModel: SubscriptionDelegate {
         let stockName: String = itemUpdate.value(withFieldName: "last_price") ?? ""
         let lastPrice: Double = Double(itemUpdate.value(withFieldName: "last_price") ?? "0")!
         
+        let stock: Stock = Stock(name: stockName, lastPrice: lastPrice)
         print("Stock name: \(stockName)\nLastPrice: \(lastPrice)")
+        
+        let itemPosition = itemUpdate.itemPos
+        let isIndexValid: Bool = self.stocks.indices.contains(itemPosition)
+        
+        if isIndexValid {
+            stocks.remove(at: itemPosition)
+            stocks.insert(stock, at: itemPosition)
+        } else {
+            stocks.append(stock)
+        }
+
     }
     
     func subscription(_ subscription: Subscription, didClearSnapshotForItemName itemName: String?, itemPos: UInt) {}
