@@ -85,23 +85,25 @@ class Connector: NSObject, ClientDelegate {
         print("Connector: status changed: \(status)")
         let status = status.rawValue
         if status.hasPrefix("CONNECTED:") {
-            NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS, object: self)
+            NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS,
+                                            object: nil,
+                                            userInfo: ["isConnected": true])
         } else if status.hasPrefix("DISCONNECTED:") {
-
-            // The LightstreamerClient will reconnect automatically in this case.
-            NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS, object: self)
+            NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS,
+                                            object: nil,
+                                            userInfo: ["isConnected": false])
         } else if status == "DISCONNECTED" {
-            NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS, object: self)
-
-            // In this case the session has been forcibly closed by the server,
-            // the LightstreamerClient will not automatically reconnect, notify the observers
-            NotificationCenter.default.post(name: NOTIFICATION_CONN_ENDED, object: self)
+            NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS,
+                                            object: nil,
+                                            userInfo: ["isConnected": false])
         }
     }
 
     func client(_ client: LightstreamerClient, didReceiveServerError errorCode: Int, withMessage errorMessage: String) {
         print(String(format: "Connector: server error: %ld - %@", errorCode, errorMessage))
 
-        NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS, object: self)
+        NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS,
+                                        object: nil,
+                                        userInfo: ["isConnected": false])
     }
 }
