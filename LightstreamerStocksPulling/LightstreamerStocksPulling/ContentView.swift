@@ -10,43 +10,43 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel: LightstreamerViewModel
     var body: some View {
-       
         VStack {
             Text("LightStreamer Stocks Pulling")
-                .frame(width: .infinity, alignment: .trailing)
+                .frame(alignment: .trailing)
                 .font(.system(size: 22,
                               weight: .semibold,
                               design: .default))
             List {
-                HStack {
+                ForEach(self.viewModel.stocks) { stock in
                     HStack {
-                        Text("Stock:")
-                            .font(.system(size: 20,
-                                          weight: .semibold,
-                                          design: .default))
+                        HStack {
+                            Text("Stock:")
+                                .font(.system(size: 20,
+                                              weight: .semibold,
+                                              design: .default))
+                            
+                            Text(stock.name)
+                                .font(.system(size: 18,
+                                              weight: .medium,
+                                              design: .rounded))
+                        }
                         
-                        Text("APPLE")
-                            .font(.system(size: 18,
-                                          weight: .medium,
-                                          design: .rounded))
-                    }
+                        Spacer()
+                        HStack {
+                            Text("Price:")
+                                .font(.system(size: 20,
+                                              weight: .semibold,
+                                              design: .default))
+                            Text("\(stock.lastPrice, specifier: "%.2f")")
+                                .font(.system(size: 18,
+                                              weight: .medium,
+                                              design: .rounded))
+                        }
+                    }.padding([.top, .bottom], 10)
                     
-                    Spacer()
-                    HStack {
-                        Text("Price:")
-                            .font(.system(size: 20,
-                                          weight: .semibold,
-                                          design: .default))
-                        Text("\(0.0, specifier: "%.2f")")
-                            .font(.system(size: 18,
-                                          weight: .medium,
-                                          design: .rounded))
-                    }
-                }.padding([.top, .bottom], 10)
-                
-            }
-        }.frame(width: .infinity, alignment: .trailing)
-            .onAppear { self.viewModel.connect() }
+                }
+            }.frame(alignment: .trailing)
+        }.onAppear { self.viewModel.connect() }
     }
 }
 

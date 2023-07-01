@@ -31,7 +31,7 @@ class LightstreamerViewModel: ObservableObject {
 
 extension LightstreamerViewModel: SubscriptionDelegate {
     func subscription(_ subscription: Subscription, didUpdateItem itemUpdate: ItemUpdate) {
-        let stockName: String = itemUpdate.value(withFieldName: "last_price") ?? ""
+        let stockName: String = itemUpdate.value(withFieldName: "stock_name") ?? ""
         let lastPrice: Double = Double(itemUpdate.value(withFieldName: "last_price") ?? "0")!
         
         let stock: Stock = Stock(name: stockName, lastPrice: lastPrice)

@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct Stock {
+struct Stock: Identifiable {
+    let id = UUID()
     let name: String
     let lastPrice: Double
 }
