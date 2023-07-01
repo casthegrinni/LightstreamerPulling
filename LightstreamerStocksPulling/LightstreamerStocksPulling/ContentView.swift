@@ -45,8 +45,8 @@ struct ContentView: View {
             
             if viewModel.isConnected {
                 Text("Connected")
-                    .foregroundStyle(.red)
-                    .font(.system(size: 12,
+                    .foregroundStyle(.green)
+                    .font(.system(size: 15,
                                   weight: .semibold,
                                   design: .rounded))
             } else {

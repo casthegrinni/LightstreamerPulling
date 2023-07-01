@@ -87,15 +87,15 @@ class Connector: NSObject, ClientDelegate {
         if status.hasPrefix("CONNECTED:") {
             NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS,
                                             object: nil,
-                                            userInfo: ["isConnected": true])
+                                            userInfo: [IS_CONNECTED: true])
         } else if status.hasPrefix("DISCONNECTED:") {
             NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS,
                                             object: nil,
-                                            userInfo: ["isConnected": false])
+                                            userInfo: [IS_CONNECTED: false])
         } else if status == "DISCONNECTED" {
             NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS,
                                             object: nil,
-                                            userInfo: ["isConnected": false])
+                                            userInfo: [IS_CONNECTED: false])
         }
     }
 
@@ -104,6 +104,6 @@ class Connector: NSObject, ClientDelegate {
 
         NotificationCenter.default.post(name: NOTIFICATION_CONN_STATUS,
                                         object: nil,
-                                        userInfo: ["isConnected": false])
+                                        userInfo: [IS_CONNECTED: false])
     }
 }
