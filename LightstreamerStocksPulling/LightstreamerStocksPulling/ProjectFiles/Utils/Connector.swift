@@ -56,6 +56,11 @@ class Connector: NSObject, ClientDelegate {
         print("Connector: connecting...")
         client.connect()
     }
+    
+    func disconnect() {
+        print("Connector: disconnecting...")
+        client.disconnect()
+    }
 
     func subscribe(_ subscription: Subscription) {
         print("Connector: subscribing...")

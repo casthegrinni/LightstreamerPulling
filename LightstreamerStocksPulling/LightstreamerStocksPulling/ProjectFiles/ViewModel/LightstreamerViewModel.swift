@@ -9,15 +9,23 @@ import SwiftUI
 import LightstreamerClient
 
 class LightstreamerViewModel: ObservableObject {
+    private var subscription: Subscription?
     @Published var stocks: [Stock] = []
     
-    
     func connect() {
-        
+        let items = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10"]
+        self.subscription = Subscription(subscriptionMode: .MERGE, items: items, fields:  ["last_price", "stock_name"])
+        if let subscription = self.subscription {
+            subscription.dataAdapter = DATA_ADAPTER
+            subscription.requestedSnapshot = .yes
+            subscription.addDelegate(self)
+            Connector.shared().subscribe(subscription)
+            Connector.shared().connect()
+        }
     }
     
     func disconnect() {
-        
+        Connector.shared().disconnect()
     }
 }
 
