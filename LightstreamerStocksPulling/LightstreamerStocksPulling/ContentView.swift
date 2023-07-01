@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @ObservedObject var viewModel: LightstreamerViewModel
     var body: some View {
        
         VStack {
@@ -46,11 +46,12 @@ struct ContentView: View {
                 
             }
         }.frame(width: .infinity, alignment: .trailing)
+            .onAppear { self.viewModel.connect() }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: LightstreamerViewModel())
     }
 }
