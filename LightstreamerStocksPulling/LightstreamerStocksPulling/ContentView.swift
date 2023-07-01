@@ -20,14 +20,9 @@ struct ContentView: View {
                 ForEach(self.viewModel.stocks) { stock in
                     HStack {
                         HStack {
-                            Text("Stock:")
+                            Text(stock.name)
                                 .font(.system(size: 20,
                                               weight: .semibold,
-                                              design: .default))
-                            
-                            Text(stock.name)
-                                .font(.system(size: 18,
-                                              weight: .medium,
                                               design: .rounded))
                         }
                         
