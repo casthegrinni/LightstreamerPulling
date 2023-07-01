@@ -72,7 +72,7 @@ extension LightstreamerViewModel: SubscriptionDelegate {
             let stock: Stock = Stock(name: stockName, lastPrice: lastPrice)
             print("Stock name: \(stockName)\nLastPrice: \(lastPrice)")
             
-            let itemPosition = itemUpdate.itemPos
+            let itemPosition = itemUpdate.itemPos - 1
             let isIndexValid: Bool = self.stocks.indices.contains(itemPosition)
             
             if isIndexValid {
