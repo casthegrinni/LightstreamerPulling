@@ -12,7 +12,7 @@ class LightstreamerViewModel: ObservableObject {
     private var subscription: Subscription?
     @Published var stocks: [Stock] = []
     
-    func connect() {
+    @objc func connect() {
         let items = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10"]
         self.subscription = Subscription(subscriptionMode: .MERGE, items: items, fields:  ["last_price", "stock_name"])
         if let subscription = self.subscription {
@@ -22,10 +22,27 @@ class LightstreamerViewModel: ObservableObject {
             Connector.shared().subscribe(subscription)
             Connector.shared().connect()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(disconnect),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(connect),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
     }
     
-    func disconnect() {
+    @objc func disconnect() {
         Connector.shared().disconnect()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIApplication.didEnterBackgroundNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIApplication.willEnterForegroundNotification,
+                                                  object: nil)
     }
 }
 
