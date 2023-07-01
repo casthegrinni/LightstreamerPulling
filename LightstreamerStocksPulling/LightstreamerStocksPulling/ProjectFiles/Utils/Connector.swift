@@ -25,7 +25,6 @@ class Connector: NSObject, ClientDelegate {
         return client.status.rawValue
     }
 
-    // MARK: -
     // MARK: Singleton access
     @objc class func shared() -> Connector {
         if __sharedInstace == nil {
@@ -43,51 +42,33 @@ class Connector: NSObject, ClientDelegate {
         Self.shared()
     }
 
-    // MARK: -
+    
     // MARK: Initialization
-
     override init() {
         client = LightstreamerClient(serverAddress: PUSH_SERVER_URL, adapterSet: ADAPTER_SET)
         super.init()
         client.addDelegate(self)
-        
-        #if os(watchOS)
-        
-        // On watchOS connections are extremely slow (for no apparent reason),
-        // so we raise the timeout and force the HTTP streaming transport,
-        // to reduce the number of connections required
-        client.connectionOptions.retryDelay = 15_000
-        client.connectionOptions.forcedTransport = .HTTP_STREAMING
-        
-        #endif
     }
 
-    // MARK: -
+    
     // MARK: Operations
     func connect() {
         print("Connector: connecting...")
-
         client.connect()
     }
 
     func subscribe(_ subscription: Subscription) {
         print("Connector: subscribing...")
-
         client.subscribe(subscription)
     }
 
     func unsubscribe(_ subscription: Subscription) {
         print("Connector: unsubscribing...")
-
         client.unsubscribe(subscription)
     }
 
-    // MARK: -
-    // MARK: Properties
 
-    // MARK: -
     // MARK: Methods of ClientDelegate
-    
     func clientDidRemoveDelegate(_ client: LightstreamerClient) {}
     func clientDidAddDelegate(_ client: LightstreamerClient) {}
 
