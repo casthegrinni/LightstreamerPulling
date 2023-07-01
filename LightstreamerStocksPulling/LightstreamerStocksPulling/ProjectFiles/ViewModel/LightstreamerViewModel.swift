@@ -11,6 +11,7 @@ import LightstreamerClient
 class LightstreamerViewModel: ObservableObject {
     private var subscription: Subscription?
     @Published var stocks: [Stock] = []
+    @Published var isConnected: Bool = false
     
     @objc func connect() {
         let items = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10"]
@@ -30,11 +31,19 @@ class LightstreamerViewModel: ObservableObject {
         NotificationCenter.default.addObserver(self, selector: #selector(connect),
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(manageConnectionStatus),
+                                               name: NOTIFICATION_CONN_STATUS,
+                                               object: nil)
     }
     
     @objc func disconnect() {
         Connector.shared().disconnect()
         self.stocks = []
+    }
+    
+    @objc func manageConnectionStatus() {
+        
     }
     
     deinit {

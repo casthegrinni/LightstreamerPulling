@@ -16,7 +16,7 @@ struct ContentView: View {
                 .font(.system(size: 22,
                               weight: .semibold,
                               design: .default))
-                .padding(.top, 30)
+                .padding(.top, 15)
             List {
                 ForEach(self.viewModel.stocks) { stock in
                     HStack {
@@ -42,6 +42,16 @@ struct ContentView: View {
                     
                 }
             }.frame(alignment: .trailing)
+            
+            if viewModel.isConnected {
+                Text("Connected")
+                    .foregroundStyle(.red)
+                    .font(.system(size: 12,
+                                  weight: .semibold,
+                                  design: .rounded))
+            } else {
+                ProgressView()
+            }
         }.onAppear { self.viewModel.connect() }
     }
 }
