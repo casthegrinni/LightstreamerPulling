@@ -18,6 +18,7 @@
 		E8C4C30C2A4FA7E3005C2935 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4C30B2A4FA7E3005C2935 /* Stock.swift */; };
 		E8C4C30F2A4FA823005C2935 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4C30E2A4FA823005C2935 /* Connector.swift */; };
 		E8C4C3122A4FA8A8005C2935 /* LightstreamerClient in Frameworks */ = {isa = PBXBuildFile; productRef = E8C4C3112A4FA8A8005C2935 /* LightstreamerClient */; };
+		E8C4C3142A4FA94D005C2935 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4C3132A4FA94D005C2935 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		E8C4C3082A4FA69B005C2935 /* LightstreamerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightstreamerViewModel.swift; sourceTree = "<group>"; };
 		E8C4C30B2A4FA7E3005C2935 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		E8C4C30E2A4FA823005C2935 /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
+		E8C4C3132A4FA94D005C2935 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E8C4C30E2A4FA823005C2935 /* Connector.swift */,
+				E8C4C3132A4FA94D005C2935 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				E8C4C30C2A4FA7E3005C2935 /* Stock.swift in Sources */,
 				E8C4C30F2A4FA823005C2935 /* Connector.swift in Sources */,
 				E8C4C2DC2A4F9EFC005C2935 /* LightstreamerStocksPullingApp.swift in Sources */,
+				E8C4C3142A4FA94D005C2935 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
