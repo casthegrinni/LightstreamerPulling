@@ -16,6 +16,8 @@
 		E8C4C2FA2A4F9EFD005C2935 /* LightstreamerStocksPullingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4C2F92A4F9EFD005C2935 /* LightstreamerStocksPullingUITestsLaunchTests.swift */; };
 		E8C4C3092A4FA69B005C2935 /* LightstreamerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4C3082A4FA69B005C2935 /* LightstreamerViewModel.swift */; };
 		E8C4C30C2A4FA7E3005C2935 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4C30B2A4FA7E3005C2935 /* Stock.swift */; };
+		E8C4C30F2A4FA823005C2935 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4C30E2A4FA823005C2935 /* Connector.swift */; };
+		E8C4C3122A4FA8A8005C2935 /* LightstreamerClient in Frameworks */ = {isa = PBXBuildFile; productRef = E8C4C3112A4FA8A8005C2935 /* LightstreamerClient */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		E8C4C2F92A4F9EFD005C2935 /* LightstreamerStocksPullingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightstreamerStocksPullingUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E8C4C3082A4FA69B005C2935 /* LightstreamerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightstreamerViewModel.swift; sourceTree = "<group>"; };
 		E8C4C30B2A4FA7E3005C2935 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		E8C4C30E2A4FA823005C2935 /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8C4C3122A4FA8A8005C2935 /* LightstreamerClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,10 +157,19 @@
 		E8C4C30A2A4FA75F005C2935 /* ProjectFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E8C4C30D2A4FA819005C2935 /* Utils */,
 				E8C4C3062A4FA00E005C2935 /* Model */,
 				E8C4C3072A4FA014005C2935 /* ViewModel */,
 			);
 			path = ProjectFiles;
+			sourceTree = "<group>";
+		};
+		E8C4C30D2A4FA819005C2935 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E8C4C30E2A4FA823005C2935 /* Connector.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +188,9 @@
 			dependencies = (
 			);
 			name = LightstreamerStocksPulling;
+			packageProductDependencies = (
+				E8C4C3112A4FA8A8005C2935 /* LightstreamerClient */,
+			);
 			productName = LightstreamerStocksPulling;
 			productReference = E8C4C2D82A4F9EFC005C2935 /* LightstreamerStocksPulling.app */;
 			productType = "com.apple.product-type.application";
@@ -247,6 +263,9 @@
 				Base,
 			);
 			mainGroup = E8C4C2CF2A4F9EFC005C2935;
+			packageReferences = (
+				E8C4C3102A4FA8A8005C2935 /* XCRemoteSwiftPackageReference "Lightstreamer-lib-client-swift" */,
+			);
 			productRefGroup = E8C4C2D92A4F9EFC005C2935 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -292,6 +311,7 @@
 				E8C4C3092A4FA69B005C2935 /* LightstreamerViewModel.swift in Sources */,
 				E8C4C2DE2A4F9EFC005C2935 /* ContentView.swift in Sources */,
 				E8C4C30C2A4FA7E3005C2935 /* Stock.swift in Sources */,
+				E8C4C30F2A4FA823005C2935 /* Connector.swift in Sources */,
 				E8C4C2DC2A4F9EFC005C2935 /* LightstreamerStocksPullingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -644,6 +664,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E8C4C3102A4FA8A8005C2935 /* XCRemoteSwiftPackageReference "Lightstreamer-lib-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Lightstreamer/Lightstreamer-lib-client-swift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E8C4C3112A4FA8A8005C2935 /* LightstreamerClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8C4C3102A4FA8A8005C2935 /* XCRemoteSwiftPackageReference "Lightstreamer-lib-client-swift" */;
+			productName = LightstreamerClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E8C4C2D02A4F9EFC005C2935 /* Project object */;
 }

@@ -1,0 +1,41 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
+      }
+    },
+    {
+      "identity" : "lightstreamer-lib-client-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Lightstreamer/Lightstreamer-lib-client-swift.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a9dc9b72328da7926555b6976c22e07759f5b9cc"
+      }
+    },
+    {
+      "identity" : "starscream",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daltoniam/Starscream.git",
+      "state" : {
+        "revision" : "df8d82047f6654d8e4b655d1b1525c64e1059d21",
+        "version" : "4.0.4"
+      }
+    },
+    {
+      "identity" : "swift-jsonpatch",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/raymccrae/swift-jsonpatch.git",
+      "state" : {
+        "revision" : "65edda8a5a756985418e53968491f25d5dc4a217",
+        "version" : "1.0.4"
+      }
+    }
+  ],
+  "version" : 2
+}

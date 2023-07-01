@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 class LightstreamerViewModel: ObservableObject {
-    @Published var score = 0
+    @Published var stocks: [Stock] = []
+    
+    
     func connect() {
         
     }
