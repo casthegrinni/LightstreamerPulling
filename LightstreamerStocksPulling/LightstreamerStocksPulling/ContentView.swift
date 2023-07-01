@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel: LightstreamerViewModel
+    @MainActor  @ObservedObject var viewModel: LightstreamerViewModel
     var body: some View {
         VStack {
-            Text("LightStreamer Stocks Pulling")
+            Text("LightStreamer - Stocks")
                 .frame(alignment: .trailing)
                 .font(.system(size: 22,
                               weight: .semibold,
                               design: .default))
+                .padding(.top, 30)
             List {
                 ForEach(self.viewModel.stocks) { stock in
                     HStack {

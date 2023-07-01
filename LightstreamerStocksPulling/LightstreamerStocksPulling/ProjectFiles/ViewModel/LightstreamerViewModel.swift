@@ -30,23 +30,25 @@ class LightstreamerViewModel: ObservableObject {
 }
 
 extension LightstreamerViewModel: SubscriptionDelegate {
+    @MainActor
     func subscription(_ subscription: Subscription, didUpdateItem itemUpdate: ItemUpdate) {
-        let stockName: String = itemUpdate.value(withFieldName: "stock_name") ?? ""
-        let lastPrice: Double = Double(itemUpdate.value(withFieldName: "last_price") ?? "0")!
-        
-        let stock: Stock = Stock(name: stockName, lastPrice: lastPrice)
-        print("Stock name: \(stockName)\nLastPrice: \(lastPrice)")
-        
-        let itemPosition = itemUpdate.itemPos
-        let isIndexValid: Bool = self.stocks.indices.contains(itemPosition)
-        
-        if isIndexValid {
-            stocks.remove(at: itemPosition)
-            stocks.insert(stock, at: itemPosition)
-        } else {
-            stocks.append(stock)
+        Task {
+            let stockName: String = itemUpdate.value(withFieldName: "stock_name") ?? ""
+            let lastPrice: Double = Double(itemUpdate.value(withFieldName: "last_price") ?? "0")!
+            
+            let stock: Stock = Stock(name: stockName, lastPrice: lastPrice)
+            print("Stock name: \(stockName)\nLastPrice: \(lastPrice)")
+            
+            let itemPosition = itemUpdate.itemPos
+            let isIndexValid: Bool = self.stocks.indices.contains(itemPosition)
+            
+            if isIndexValid {
+                stocks.remove(at: itemPosition)
+                stocks.insert(stock, at: itemPosition)
+            } else {
+                stocks.append(stock)
+            }
         }
-
     }
     
     func subscription(_ subscription: Subscription, didClearSnapshotForItemName itemName: String?, itemPos: UInt) {}
@@ -60,28 +62,4 @@ extension LightstreamerViewModel: SubscriptionDelegate {
     func subscription(_ subscription: Subscription, didFailWithErrorCode code: Int, message: String?) {}
     func subscriptionDidUnsubscribe(_ subscription: Subscription) {}
     func subscription(_ subscription: Subscription, didReceiveRealFrequency frequency: RealMaxFrequency?) {}
-}
-
-extension LightstreamerViewModel: ClientDelegate {
-    func clientDidRemoveDelegate(_ client: LightstreamerClient) {
-        
-    }
-    
-    func clientDidAddDelegate(_ client: LightstreamerClient) {
-        
-    }
-    
-    func client(_ client: LightstreamerClient, didReceiveServerError errorCode: Int, withMessage errorMessage: String) {
-        
-    }
-    
-    func client(_ client: LightstreamerClient, didChangeStatus status: LightstreamerClient.Status) {
-        
-    }
-    
-    func client(_ client: LightstreamerClient, didChangeProperty property: String) {
-        
-    }
-    
-    
 }
