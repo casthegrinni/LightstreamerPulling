@@ -8,14 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
+       
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+            Text("LightStreamer Stocks Pulling")
+                .frame(width: .infinity, alignment: .trailing)
+                .font(.system(size: 22,
+                              weight: .semibold,
+                              design: .default))
+            List {
+                HStack {
+                    HStack {
+                        Text("Stock:")
+                            .font(.system(size: 20,
+                                          weight: .semibold,
+                                          design: .default))
+                        
+                        Text("APPLE")
+                            .font(.system(size: 18,
+                                          weight: .medium,
+                                          design: .rounded))
+                    }
+                    
+                    Spacer()
+                    HStack {
+                        Text("Price:")
+                            .font(.system(size: 20,
+                                          weight: .semibold,
+                                          design: .default))
+                        Text("\(0.0, specifier: "%.2f")")
+                            .font(.system(size: 18,
+                                          weight: .medium,
+                                          design: .rounded))
+                    }
+                }.padding([.top, .bottom], 10)
+                
+            }
+        }.frame(width: .infinity, alignment: .trailing)
     }
 }
 

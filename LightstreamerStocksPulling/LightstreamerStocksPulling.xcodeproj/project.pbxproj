@@ -95,6 +95,8 @@
 		E8C4C2DA2A4F9EFC005C2935 /* LightstreamerStocksPulling */ = {
 			isa = PBXGroup;
 			children = (
+				E8C4C3072A4FA014005C2935 /* ViewModel */,
+				E8C4C3062A4FA00E005C2935 /* Model */,
 				E8C4C2DB2A4F9EFC005C2935 /* LightstreamerStocksPullingApp.swift */,
 				E8C4C2DD2A4F9EFC005C2935 /* ContentView.swift */,
 				E8C4C2DF2A4F9EFD005C2935 /* Assets.xcassets */,
@@ -127,6 +129,20 @@
 				E8C4C2F92A4F9EFD005C2935 /* LightstreamerStocksPullingUITestsLaunchTests.swift */,
 			);
 			path = LightstreamerStocksPullingUITests;
+			sourceTree = "<group>";
+		};
+		E8C4C3062A4FA00E005C2935 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E8C4C3072A4FA014005C2935 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
